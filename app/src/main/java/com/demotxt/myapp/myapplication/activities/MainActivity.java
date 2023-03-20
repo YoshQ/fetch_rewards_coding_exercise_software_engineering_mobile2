@@ -19,6 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,9 +53,15 @@ public class MainActivity extends AppCompatActivity {
                         jsonObject = response.getJSONObject(i) ;
                         Employee employee = new Employee() ;
                         employee.setName(jsonObject.getString("name"));
-                        //employee.setId(jsonObject.getInt("id"));
                         employee.setId(jsonObject.getString("id"));
                         lstEmployee.add(employee);
+
+                        Collections.sort(lstEmployee, new Comparator<Employee>() {
+                            @Override
+                            public int compare(Employee lhs, Employee rhs) {
+                                return lhs.getName().compareTo(rhs.getName());
+                            }
+                        });
 
                     } catch (JSONException e) {
                         e.printStackTrace();
