@@ -20,8 +20,12 @@ public class EmployeeActivity extends AppCompatActivity {
 
         // Recieve data
         String name  = getIntent().getExtras().getString("employee_name");
-        //int id = getIntent().getExtras().getInt("id") ;
-        String id = getIntent().getExtras().getString("id");
+        int id = getIntent().getExtras().getInt("id") ;
+        //String id = getIntent().getExtras().getString("id");
+        //String id = toString(getIntent().getExtras().getInt("id"));
+        //String id = getIntent().getExtras().getInt("id").toString();
+        //id = id.toString();
+        //String idString = id.toString();
 
         // ini views
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingtoolbar_id);

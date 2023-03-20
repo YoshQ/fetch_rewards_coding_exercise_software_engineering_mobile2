@@ -54,12 +54,20 @@ public class MainActivity extends AppCompatActivity {
                         Employee employee = new Employee() ;
                         employee.setName(jsonObject.getString("name"));
                         employee.setId(jsonObject.getString("id"));
+                        //employee.setId(jsonObject.getInt("id"));
                         lstEmployee.add(employee);
 
                         Collections.sort(lstEmployee, new Comparator<Employee>() {
                             @Override
                             public int compare(Employee lhs, Employee rhs) {
-                                return lhs.getName().compareTo(rhs.getName());
+                                int nameCompare = lhs.getName().compareTo(rhs.getName());
+                                if(nameCompare != 0) {
+                                    return nameCompare;
+                                }
+                                //return lhs.getName().compareTo(rhs.getName());
+                                //return lhs.getId().compareTo(rhs.getId());
+                                //return Integer.compare(lhs.getId(), rhs.getId());
+                                return Integer.compare(Integer.parseInt(lhs.getId()), Integer.parseInt(rhs.getId()));
                             }
                         });
 
