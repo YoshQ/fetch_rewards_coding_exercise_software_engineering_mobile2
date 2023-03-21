@@ -57,29 +57,36 @@ public class MainActivity extends AppCompatActivity {
         request = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                Log.i("creation2", "just inside onresponse");
                 JSONObject jsonObject  = null ;
-                Employee employeeAll = new Employee();
-                Employee employee1 = new Employee();
-                Employee employee2 = new Employee();
-                Employee employee3 = new Employee();
-                Employee employee4 = new Employee();
+                //Employee employeeAll = new Employee();
+                //Employee employee1 = new Employee();
+                //Employee employee2 = new Employee();
+                //Employee employee3 = new Employee();
+                //Employee employee4 = new Employee();
 
                 for (int i = 0 ; i < response.length(); i++ ) {
+                    Log.i("creation2", "just inside first for loop");
                     try {
                         jsonObject = response.getJSONObject(i) ;
                         Employee employee = new Employee() ;
                         employee.setName(jsonObject.getString("name"));
                         employee.setId(jsonObject.getString("id"));
                         employee.setListId(jsonObject.getString("listId"));
-                        lstEmployee.add(employee);
+                        //lstEmployee.add(employee);
+                        lstEmployeeAll.add(employee);
 
                     } catch (JSONException e) {
+                        Log.i("creation2", "inside jsonexception");
                         e.printStackTrace();
                     }
                 }
-                Collections.sort(lstEmployee, new Comparator<Employee>() {
+                //Collections.sort(lstEmployee, new Comparator<Employee>() {
+                Collections.sort(lstEmployeeAll, new Comparator<Employee>() {
                     @Override
                     public int compare(Employee lhs, Employee rhs) {
+                        //Log.i("creation2", "just inside compare");
+                        //Log.i("creation2", "just inside compare, lstEmployeeAll.size(): " + lstEmployeeAll.size());
                         int nameCompare = lhs.getName().compareTo(rhs.getName());
                         if(nameCompare != 0) {
                             return nameCompare;
@@ -88,31 +95,47 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                Log.i("creation2", "just before 2nd for loop");
+                Log.i("creation2", "just before 2nd for loop, lstEmployeeAll.size(): " + lstEmployeeAll.size());
                 for (int i = 0 ; i < lstEmployeeAll.size(); i++ ) {
-                    //if (!lstEmployeeAll.indexOf(i).getName().isEmpty() & jsonObject.getString("name") != "null") {
-                    //lstEmployeeAll.getName()
-                    //lstEmployeeAll.indexOf(i)
+                    Log.i("creation2", "just inside second for loop");
                     if (!lstEmployeeAll.get(i).getName().isEmpty() & lstEmployeeAll.get(i).getName() != "null") {
-                        //Log.i("creation2", "just inside if statement, employee is:" + employee);
-                        switch (lstEmployeeAll.get(i).getListId()) {
-                            case "1":
-                                Log.i("creation2", "in case 1");
-                                lstEmployee1.add(lstEmployeeAll.get(i));
-                                break;
-                            case "2":
-                                lstEmployee2.add(lstEmployeeAll.get(i));
-                                break;
-                            case "3":
+                        Log.i("creation2", "just inside if statement of second for loop");
+                        //switch (lstEmployeeAll.get(i).getListId()) {
+                        //switch(true) {
+                        //if (lstEmployeeAll.get(i).getListId() == "1") {
+                        if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 1) {
+                            //case "1":
+                            //case (lstEmployeeAll.get(i).getListId() == "1"):
+                            Log.i("creation2", "in case 1");
+                            lstEmployee1.add(lstEmployeeAll.get(i));
+                            //lstEmployee1.add(i);
+                            //lstEmployee1.add(i, lstEmployeeAll.get(i));
+                            //break;
+                        }
+                        else if (lstEmployeeAll.get(i).getListId() == "2") {
+                            //case (lstEmployeeAll.get(i).getListId() == "2"):
+                            //case "2":
+                            lstEmployee2.add(lstEmployeeAll.get(i));
+                            //break;
+                        }
+                        else if (lstEmployeeAll.get(i).getListId() == "3") {
+                            //case (lstEmployeeAll.get(i).getListId() == "3"):
+                            //case "3":
                                 lstEmployee3.add(lstEmployeeAll.get(i));
-                                break;
-                            case "4":
-                                lstEmployee4.add(lstEmployeeAll.get(i));
-                                break;
+                                //break;
+                        }
+                        else if (lstEmployeeAll.get(i).getListId() == "4") {
+                            //case (lstEmployeeAll.get(i).getListId() == "4"):
+                            //case "4":
+                            lstEmployee4.add(lstEmployeeAll.get(i));
+                            //break;
                         }
                     }
                 }
 
-                setuprecyclerview(lstEmployee);
+                //setuprecyclerview(lstEmployee);
+                setuprecyclerview(lstEmployee1);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -123,8 +146,10 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request) ;
     }
 
-    private void setuprecyclerview(List<Employee> lstEmployee) {
-        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee) ;
+    //private void setuprecyclerview(List<Employee> lstEmployee) {
+    private void setuprecyclerview(List<Employee> lstEmployee1) {
+        //RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee) ;
+        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee1) ;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
     }

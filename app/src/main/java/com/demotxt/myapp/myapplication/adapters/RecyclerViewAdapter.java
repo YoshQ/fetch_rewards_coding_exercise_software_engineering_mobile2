@@ -24,7 +24,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context mContext ;
     private List<Employee> mData ;
-    RequestOptions option;
+    //RequestOptions option;
 
     public RecyclerViewAdapter(Context mContext, List<Employee> mData) {
         this.mContext = mContext;
