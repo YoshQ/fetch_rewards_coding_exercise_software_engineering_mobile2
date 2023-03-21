@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -69,9 +70,8 @@ public class MainActivity extends AppCompatActivity {
                         Employee employee = new Employee() ;
                         employee.setName(jsonObject.getString("name"));
                         employee.setId(jsonObject.getString("id"));
+                        employee.setListId(jsonObject.getString("listId"));
                         lstEmployee.add(employee);
-
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -87,6 +87,30 @@ public class MainActivity extends AppCompatActivity {
                         return Integer.compare(Integer.parseInt(lhs.getId()), Integer.parseInt(rhs.getId()));
                     }
                 });
+
+                for (int i = 0 ; i < lstEmployeeAll.size(); i++ ) {
+                    //if (!lstEmployeeAll.indexOf(i).getName().isEmpty() & jsonObject.getString("name") != "null") {
+                    //lstEmployeeAll.getName()
+                    //lstEmployeeAll.indexOf(i)
+                    if (!lstEmployeeAll.get(i).getName().isEmpty() & lstEmployeeAll.get(i).getName() != "null") {
+                        //Log.i("creation2", "just inside if statement, employee is:" + employee);
+                        switch (lstEmployeeAll.get(i).getListId()) {
+                            case "1":
+                                Log.i("creation2", "in case 1");
+                                lstEmployee1.add(lstEmployeeAll.get(i));
+                                break;
+                            case "2":
+                                lstEmployee2.add(lstEmployeeAll.get(i));
+                                break;
+                            case "3":
+                                lstEmployee3.add(lstEmployeeAll.get(i));
+                                break;
+                            case "4":
+                                lstEmployee4.add(lstEmployeeAll.get(i));
+                                break;
+                        }
+                    }
+                }
 
                 setuprecyclerview(lstEmployee);
             }
