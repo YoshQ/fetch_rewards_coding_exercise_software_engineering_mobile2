@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private List<Employee> lstEmployee2;
     private List<Employee> lstEmployee3;
     private List<Employee> lstEmployee4;
-    private RecyclerView recyclerView ;
+    private RecyclerView recyclerView;
+    private RecyclerView recyclerView2;
     TabLayout tabLayout;
 
     @Override
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 //lstEmployeeAll.stream().collect(Collectors.groupingBy(w -> w.getListId()));
         //Map<String, List<Employee>> passingFailing = students.stream()    .collect(Collectors.partitioningBy(s -> s.getGrade() >= PASS_THRESHOLD));
         recyclerView = findViewById(R.id.recyclerviewid);
-        //recyclerView2 = findViewById(R.id.recyclerviewid2);
+        recyclerView2 = findViewById(R.id.recyclerviewid2);
         jsonrequest();
     }
 
@@ -97,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
                         if(listCompare != 0) {
                             return listCompare;
                         }
-                        return lhs.getName().compareTo(rhs.getName());
+                        //return lhs.getName().compareTo(rhs.getName());
+                        return Integer.compare(Integer.parseInt(lhs.getId()), Integer.parseInt(rhs.getId()));
                     }
                 });
 
@@ -125,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
 
                 setuprecyclerview(lstEmployee1);
                 //setuprecyclerview(lstEmployeeAll);
+                //setuprecyclerview(lstEmployee2);
+                setuprecyclerview2(lstEmployee2);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -139,8 +143,16 @@ public class MainActivity extends AppCompatActivity {
     //private void setuprecyclerview(List<Employee> lstEmployeeAll) {
         //RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee) ;
         RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee1);
+        //RecyclerViewAdapter myadapter2 = new RecyclerViewAdapter(this, lstEmployee2);
         //RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployeeAll);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
+        //recyclerView2.setLayoutManager(new LinearLayoutManager(this));
+        //recyclerView2.setAdapter(myadapter2);
+    }
+    private void setuprecyclerview2(List<Employee> lstEmployee2) {
+        RecyclerViewAdapter myadapter2 = new RecyclerViewAdapter(this, lstEmployee2);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView2.setAdapter(myadapter2);
     }
 }

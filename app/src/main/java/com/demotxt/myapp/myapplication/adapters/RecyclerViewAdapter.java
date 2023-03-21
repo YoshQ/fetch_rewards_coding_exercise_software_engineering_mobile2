@@ -25,14 +25,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context mContext ;
     private List<Employee> mData ;
-    //RequestOptions option;
 
     public RecyclerViewAdapter(Context mContext, List<Employee> mData) {
         this.mContext = mContext;
         this.mData = mData;
-
-        // Request option for Glide
-        //option = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
     }
 
     @Override
@@ -42,16 +38,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         LayoutInflater inflater = LayoutInflater.from(mContext);
         view = inflater.inflate(R.layout.employee_row_item,parent,false) ;
         final MyViewHolder viewHolder = new MyViewHolder(view) ;
-        /*viewHolder.view_container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(mContext, EmployeeActivity.class);
-                i.putExtra("name",mData.get(viewHolder.getAdapterPosition()).getName());
-                i.putExtra("id",mData.get(viewHolder.getAdapterPosition()).getId());
-
-                mContext.startActivity(i);
-            }
-        });*/
         return viewHolder;
     }
 
@@ -84,5 +70,4 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             nameView = itemView.findViewById(R.id.employee_name);
         }
     }
-
 }

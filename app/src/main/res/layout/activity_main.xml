@@ -26,7 +26,7 @@
         android:layout_marginRight="16dp"
         android:id="@+id/recyclerviewid"></androidx.recyclerview.widget.RecyclerView>
 
-    <!--<androidx.recyclerview.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
@@ -34,7 +34,7 @@
         android:layout_marginRight="16dp"
         android:id="@+id/recyclerviewid2"></androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
