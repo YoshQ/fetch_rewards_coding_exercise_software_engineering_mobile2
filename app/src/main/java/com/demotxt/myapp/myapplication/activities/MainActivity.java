@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
     private JsonArrayRequest request ;
     private RequestQueue requestQueue ;
     private List<Employee> lstEmployee;
+    private List<Employee> lstEmployeeAll;
+    private List<Employee> lstEmployee1;
+    private List<Employee> lstEmployee2;
+    private List<Employee> lstEmployee3;
+    private List<Employee> lstEmployee4;
     private RecyclerView recyclerView ;
 
 
@@ -38,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lstEmployee = new ArrayList<>() ;
+        lstEmployeeAll = new ArrayList<>();
+        lstEmployee1 = new ArrayList<>();
+        lstEmployee2 = new ArrayList<>();
+        lstEmployee3 = new ArrayList<>();
+        lstEmployee4 = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerviewid);
         jsonrequest();
     }
@@ -47,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 JSONObject jsonObject  = null ;
+                Employee employeeAll = new Employee();
+                Employee employee1 = new Employee();
+                Employee employee2 = new Employee();
+                Employee employee3 = new Employee();
+                Employee employee4 = new Employee();
 
                 for (int i = 0 ; i < response.length(); i++ ) {
                     try {
