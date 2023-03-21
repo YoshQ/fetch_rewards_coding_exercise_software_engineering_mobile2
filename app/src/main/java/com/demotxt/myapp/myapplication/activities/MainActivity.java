@@ -88,51 +88,45 @@ public class MainActivity extends AppCompatActivity {
                         //Log.i("creation2", "just inside compare");
                         //Log.i("creation2", "just inside compare, lstEmployeeAll.size(): " + lstEmployeeAll.size());
                         int nameCompare = lhs.getName().compareTo(rhs.getName());
-                        if(nameCompare != 0) {
-                            return nameCompare;
-                        }
-                        return Integer.compare(Integer.parseInt(lhs.getId()), Integer.parseInt(rhs.getId()));
+                        //if(nameCompare != 0) {
+                        return nameCompare;
+                        //}
+                        //return Integer.compare(Integer.parseInt(lhs.getId()), Integer.parseInt(rhs.getId()));
                     }
                 });
 
-                Log.i("creation2", "just before 2nd for loop");
+                //Log.i("creation2", "just before 2nd for loop");
                 Log.i("creation2", "just before 2nd for loop, lstEmployeeAll.size(): " + lstEmployeeAll.size());
                 for (int i = 0 ; i < lstEmployeeAll.size(); i++ ) {
                     Log.i("creation2", "just inside second for loop");
                     if (!lstEmployeeAll.get(i).getName().isEmpty() & lstEmployeeAll.get(i).getName() != "null") {
                         Log.i("creation2", "just inside if statement of second for loop");
-                        //switch (lstEmployeeAll.get(i).getListId()) {
-                        //switch(true) {
-                        //if (lstEmployeeAll.get(i).getListId() == "1") {
                         if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 1) {
-                            //case "1":
-                            //case (lstEmployeeAll.get(i).getListId() == "1"):
                             Log.i("creation2", "in case 1");
                             lstEmployee1.add(lstEmployeeAll.get(i));
-                            //lstEmployee1.add(i);
-                            //lstEmployee1.add(i, lstEmployeeAll.get(i));
-                            //break;
                         }
-                        else if (lstEmployeeAll.get(i).getListId() == "2") {
-                            //case (lstEmployeeAll.get(i).getListId() == "2"):
-                            //case "2":
+                        else if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 2) {
                             lstEmployee2.add(lstEmployeeAll.get(i));
-                            //break;
                         }
-                        else if (lstEmployeeAll.get(i).getListId() == "3") {
-                            //case (lstEmployeeAll.get(i).getListId() == "3"):
-                            //case "3":
-                                lstEmployee3.add(lstEmployeeAll.get(i));
-                                //break;
+                        else if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 3) {
+                            lstEmployee3.add(lstEmployeeAll.get(i));
                         }
-                        else if (lstEmployeeAll.get(i).getListId() == "4") {
-                            //case (lstEmployeeAll.get(i).getListId() == "4"):
-                            //case "4":
+                        else if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 4) {
                             lstEmployee4.add(lstEmployeeAll.get(i));
-                            //break;
                         }
                     }
                 }
+
+                /*Collections.sort(lstEmployee1, new Comparator<Employee>() {
+                    @Override
+                    public int compare(Employee lhs, Employee rhs) {
+                        int nameCompare = lhs.getName().compareTo(rhs.getName());
+                        if(nameCompare != 0) {
+                            return nameCompare;
+                        }
+                        return Integer.compare(Integer.parseInt(lhs.getId()), Integer.parseInt(rhs.getId()));
+                    }
+                });*/
 
                 //setuprecyclerview(lstEmployee);
                 setuprecyclerview(lstEmployee1);
