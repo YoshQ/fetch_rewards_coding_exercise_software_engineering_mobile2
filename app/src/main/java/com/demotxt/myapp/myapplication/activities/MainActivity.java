@@ -1,9 +1,12 @@
 package com.demotxt.myapp.myapplication.activities;
 
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+//import android.support.v7.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+//import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 
 import com.android.volley.RequestQueue;
@@ -23,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,7 +54,13 @@ public class MainActivity extends AppCompatActivity {
         lstEmployee2 = new ArrayList<>();
         lstEmployee3 = new ArrayList<>();
         lstEmployee4 = new ArrayList<>();
+        //Map<String, List<Employee> empListGrouped =
+                //lstEmployeeAll.stream().collect(Collectors.groupingBy(w -> w.getListId()));
+        Map<String, List<Employee>> empListGrouped =
+                lstEmployeeAll.stream().collect(Collectors.groupingBy(w -> w.getListId()));
+        //Map<String, List<Employee>> passingFailing = students.stream()    .collect(Collectors.partitioningBy(s -> s.getGrade() >= PASS_THRESHOLD));
         recyclerView = findViewById(R.id.recyclerviewid);
+        //recyclerView2 = findViewById(R.id.recyclerviewid2);
         jsonrequest();
     }
 
@@ -59,11 +70,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 Log.i("creation2", "just inside onresponse");
                 JSONObject jsonObject  = null ;
-                //Employee employeeAll = new Employee();
-                //Employee employee1 = new Employee();
-                //Employee employee2 = new Employee();
-                //Employee employee3 = new Employee();
-                //Employee employee4 = new Employee();
 
                 for (int i = 0 ; i < response.length(); i++ ) {
                     Log.i("creation2", "just inside first for loop");
@@ -73,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                         employee.setName(jsonObject.getString("name"));
                         employee.setId(jsonObject.getString("id"));
                         employee.setListId(jsonObject.getString("listId"));
-                        //lstEmployee.add(employee);
                         lstEmployeeAll.add(employee);
 
                     } catch (JSONException e) {
@@ -81,17 +86,17 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                //Collections.sort(lstEmployee, new Comparator<Employee>() {
                 Collections.sort(lstEmployeeAll, new Comparator<Employee>() {
                     @Override
                     public int compare(Employee lhs, Employee rhs) {
                         //Log.i("creation2", "just inside compare");
                         //Log.i("creation2", "just inside compare, lstEmployeeAll.size(): " + lstEmployeeAll.size());
-                        int nameCompare = lhs.getName().compareTo(rhs.getName());
-                        //if(nameCompare != 0) {
-                        return nameCompare;
-                        //}
-                        //return Integer.compare(Integer.parseInt(lhs.getId()), Integer.parseInt(rhs.getId()));
+                        int listCompare = Integer.compare(Integer.parseInt(lhs.getListId()), Integer.parseInt(rhs.getListId()));
+                        //return nameCompare;
+                        if(listCompare != 0) {
+                            return listCompare;
+                        }
+                        return lhs.getName().compareTo(rhs.getName());
                     }
                 });
 
@@ -117,19 +122,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                /*Collections.sort(lstEmployee1, new Comparator<Employee>() {
-                    @Override
-                    public int compare(Employee lhs, Employee rhs) {
-                        int nameCompare = lhs.getName().compareTo(rhs.getName());
-                        if(nameCompare != 0) {
-                            return nameCompare;
-                        }
-                        return Integer.compare(Integer.parseInt(lhs.getId()), Integer.parseInt(rhs.getId()));
-                    }
-                });*/
-
-                //setuprecyclerview(lstEmployee);
-                setuprecyclerview(lstEmployee1);
+                //setuprecyclerview(lstEmployee1);
+                setuprecyclerview(lstEmployeeAll);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -140,10 +134,11 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request) ;
     }
 
-    //private void setuprecyclerview(List<Employee> lstEmployee) {
-    private void setuprecyclerview(List<Employee> lstEmployee1) {
+    //private void setuprecyclerview(List<Employee> lstEmployee1) {
+    private void setuprecyclerview(List<Employee> lstEmployeeAll) {
         //RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee) ;
-        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee1) ;
+        //RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee1);
+        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployeeAll);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
     }

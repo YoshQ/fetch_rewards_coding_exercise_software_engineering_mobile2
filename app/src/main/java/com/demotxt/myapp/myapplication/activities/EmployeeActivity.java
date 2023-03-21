@@ -1,7 +1,8 @@
 package com.demotxt.myapp.myapplication.activities;
 
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.design.widget.CollapsingToolbarLayout;
+//import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -28,8 +29,8 @@ public class EmployeeActivity extends AppCompatActivity {
         //String idString = id.toString();
 
         // ini views
-        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingtoolbar_id);
-        collapsingToolbarLayout.setTitleEnabled(true);
+        //CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingtoolbar_id);
+        //collapsingToolbarLayout.setTitleEnabled(true);
 
         TextView tv_name = findViewById(R.id.aa_employee_name);
         TextView tv_studio = findViewById(R.id.aa_id);
@@ -38,7 +39,7 @@ public class EmployeeActivity extends AppCompatActivity {
         tv_name.setText(name);
         tv_studio.setText(id);
 
-        collapsingToolbarLayout.setTitle(name);
+        //collapsingToolbarLayout.setTitle(name);
 
         RequestOptions requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
     }

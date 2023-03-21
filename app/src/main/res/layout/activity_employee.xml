@@ -32,23 +32,18 @@
                 android:theme="@style/ThemeOverlay.AppCompat.Light">
             </android.support.v7.widget.Toolbar>
 
-
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="50dp"
+                android:padding="15dp"
                 >
-
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="30dp"
                     android:orientation="vertical"
                     android:layout_margin="8dp">
-
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -57,14 +52,6 @@
                         android:text="Name"
                         android:textStyle="bold"
                         android:textSize="18sp"/>
-
-                    <!--<TextView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Category"
-                        android:id="@+id/aa_categorie"/>
-
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -86,19 +73,10 @@
                         android:layout_marginTop="5dp"
                         android:id="@+id/aa_id"/>
 
-
-
                 </LinearLayout>
-
-
             </LinearLayout>
-
-
         </android.support.design.widget.CollapsingToolbarLayout>
-
-
     </android.support.design.widget.AppBarLayout>
-
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -106,17 +84,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:padding="16dp"        >
 
-
-        <!--<TextView
-            android:textColor="#fff"
-            android:text="Anime Description"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/aa_description"/>-->
-
-
-
     </android.support.v4.widget.NestedScrollView>
-
-    
 </android.support.design.widget.CoordinatorLayout>
