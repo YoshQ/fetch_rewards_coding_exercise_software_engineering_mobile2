@@ -42,7 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         LayoutInflater inflater = LayoutInflater.from(mContext);
         view = inflater.inflate(R.layout.employee_row_item,parent,false) ;
         final MyViewHolder viewHolder = new MyViewHolder(view) ;
-        viewHolder.view_container.setOnClickListener(new View.OnClickListener() {
+        /*viewHolder.view_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mContext, EmployeeActivity.class);
@@ -51,15 +51,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 mContext.startActivity(i);
             }
-        });
+        });*/
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
+        //holder.idView.setText(mData.get(position).getId());
+        holder.idView.setText("ID: " + mData.get(position).getId());
+        holder.listIdView.setText(mData.get(position).getListId());
         holder.nameView.setText(mData.get(position).getName());
-        holder.idView.setText(mData.get(position).getId());
     }
 
     @Override
@@ -69,16 +71,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nameView ;
-        TextView idView ;
+        TextView nameView, idView, listIdView;
+        //TextView idView ;
         LinearLayout view_container;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             view_container = itemView.findViewById(R.id.container);
+            idView = itemView.findViewById(R.id.id);
+            listIdView = itemView.findViewById(R.id.listId);
             nameView = itemView.findViewById(R.id.employee_name);
-            idView = itemView.findViewById(R.id.aa_id);
         }
     }
 

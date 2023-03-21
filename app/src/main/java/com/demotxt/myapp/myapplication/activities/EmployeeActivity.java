@@ -14,10 +14,10 @@ public class EmployeeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee);
+        //setContentView(R.layout.activity_employee);
 
         // hide the default actionbar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         // Recieve data
         String name  = getIntent().getExtras().getString("employee_name");
@@ -32,11 +32,12 @@ public class EmployeeActivity extends AppCompatActivity {
         //CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingtoolbar_id);
         //collapsingToolbarLayout.setTitleEnabled(true);
 
-        TextView tv_name = findViewById(R.id.aa_employee_name);
-        TextView tv_studio = findViewById(R.id.aa_id);
+        //TextView tv_name = findViewById(R.id.aa_employee_name);
+        //TextView tv_studio = findViewById(R.id.aa_id);
+        TextView tv_studio = findViewById(R.id.id);
 
         // setting values to each view
-        tv_name.setText(name);
+        //tv_name.setText(name);
         tv_studio.setText(id);
 
         //collapsingToolbarLayout.setTitle(name);

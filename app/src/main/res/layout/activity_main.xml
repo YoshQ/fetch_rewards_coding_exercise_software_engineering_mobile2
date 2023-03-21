@@ -6,6 +6,18 @@
     tools:context="com.demotxt.myapp.myapplication.activities.MainActivity"
     android:background="#303030">
 
+    <!--<com.google.android.material.tabs.TabLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <com.google.android.material.tabs.TabItem
+            android:text="List 1" android:layout_height="wrap_content" android:layout_width="match_parent"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:text="List 2" android:layout_height="wrap_content" android:layout_width="match_parent"/>
+
+    </com.google.android.material.tabs.TabLayout>-->
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +26,7 @@
         android:layout_marginRight="16dp"
         android:id="@+id/recyclerviewid"></androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
@@ -36,6 +48,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:id="@+id/recyclerviewid4"></androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/recyclerviewid4"></androidx.recyclerview.widget.RecyclerView>-->
 
 </LinearLayout>

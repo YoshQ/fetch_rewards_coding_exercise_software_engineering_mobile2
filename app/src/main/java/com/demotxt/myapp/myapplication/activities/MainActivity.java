@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 import com.demotxt.myapp.myapplication.R;
 import com.demotxt.myapp.myapplication.adapters.RecyclerViewAdapter;
 import com.demotxt.myapp.myapplication.model.Employee;
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Employee> lstEmployee3;
     private List<Employee> lstEmployee4;
     private RecyclerView recyclerView ;
-
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         lstEmployee4 = new ArrayList<>();
         //Map<String, List<Employee> empListGrouped =
                 //lstEmployeeAll.stream().collect(Collectors.groupingBy(w -> w.getListId()));
-        Map<String, List<Employee>> empListGrouped =
-                lstEmployeeAll.stream().collect(Collectors.groupingBy(w -> w.getListId()));
+        //Map<String, List<Employee>> empListGrouped =
+                //lstEmployeeAll.stream().collect(Collectors.groupingBy(w -> w.getListId()));
         //Map<String, List<Employee>> passingFailing = students.stream()    .collect(Collectors.partitioningBy(s -> s.getGrade() >= PASS_THRESHOLD));
         recyclerView = findViewById(R.id.recyclerviewid);
         //recyclerView2 = findViewById(R.id.recyclerviewid2);
@@ -122,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                //setuprecyclerview(lstEmployee1);
-                setuprecyclerview(lstEmployeeAll);
+                setuprecyclerview(lstEmployee1);
+                //setuprecyclerview(lstEmployeeAll);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -134,11 +135,11 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request) ;
     }
 
-    //private void setuprecyclerview(List<Employee> lstEmployee1) {
-    private void setuprecyclerview(List<Employee> lstEmployeeAll) {
+    private void setuprecyclerview(List<Employee> lstEmployee1) {
+    //private void setuprecyclerview(List<Employee> lstEmployeeAll) {
         //RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee) ;
-        //RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee1);
-        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployeeAll);
+        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployee1);
+        //RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployeeAll);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
     }
