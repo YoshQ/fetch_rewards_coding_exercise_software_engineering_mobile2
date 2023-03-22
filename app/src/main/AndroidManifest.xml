@@ -21,10 +21,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".activities.EmployeeActivity"
-            android:exported="false">
-
-        </activity>
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
     </application>
 

@@ -1,7 +1,6 @@
 package com.demotxt.myapp.myapplication.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 //import android.support.v7.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.request.RequestOptions;
-import com.demotxt.myapp.myapplication.activities.EmployeeActivity;
 import com.demotxt.myapp.myapplication.model.Employee;
 import com.demotxt.myapp.myapplication.R ;
 
@@ -46,8 +43,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         //holder.idView.setText(mData.get(position).getId());
         holder.idView.setText("ID: " + mData.get(position).getId());
-        holder.listIdView.setText(mData.get(position).getListId());
-        holder.nameView.setText(mData.get(position).getName());
+        holder.listIdView.setText("List ID: " + mData.get(position).getListId());
+        holder.nameView.setText("Name: " + mData.get(position).getName());
     }
 
     @Override
