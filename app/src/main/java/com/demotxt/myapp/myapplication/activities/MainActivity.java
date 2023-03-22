@@ -109,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("creation2", "just inside second for loop");
                     if (!lstEmployeeAll.get(i).getName().isEmpty() & lstEmployeeAll.get(i).getName() != "null") {
                         Log.i("creation2", "just inside if statement of second for loop");
-                        if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 1) {
-                            Log.i("creation2", "in case 1");
+                        //if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 1) {
+                            //Log.i("creation2", "in case 1");
                             lstEmployee1.add(lstEmployeeAll.get(i));
-                        }
+                        /*}
                         else if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 2) {
                             lstEmployee2.add(lstEmployeeAll.get(i));
                         }
@@ -121,14 +121,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else if (Integer.parseInt(lstEmployeeAll.get(i).getListId()) == 4) {
                             lstEmployee4.add(lstEmployeeAll.get(i));
-                        }
+                        }*/
                     }
                 }
 
                 setuprecyclerview(lstEmployee1);
                 //setuprecyclerview(lstEmployeeAll);
                 //setuprecyclerview(lstEmployee2);
-                setuprecyclerview2(lstEmployee2);
+                //setuprecyclerview2(lstEmployee2);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -150,9 +150,14 @@ public class MainActivity extends AppCompatActivity {
         //recyclerView2.setLayoutManager(new LinearLayoutManager(this));
         //recyclerView2.setAdapter(myadapter2);
     }
-    private void setuprecyclerview2(List<Employee> lstEmployee2) {
+    /*private void setuprecyclerview2(List<Employee> lstEmployee2) {
         RecyclerViewAdapter myadapter2 = new RecyclerViewAdapter(this, lstEmployee2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
         recyclerView2.setAdapter(myadapter2);
     }
+    private void setuprecyclerview(List<Employee> lstEmployeeAll) {
+        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this, lstEmployeeAll);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(myadapter);
+    }*/
 }
