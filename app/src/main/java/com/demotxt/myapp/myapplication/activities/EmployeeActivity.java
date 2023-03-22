@@ -14,30 +14,13 @@ public class EmployeeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_employee);
-
-        // hide the default actionbar
-        //getSupportActionBar().hide();
 
         // Recieve data
         String name  = getIntent().getExtras().getString("employee_name");
         int id = getIntent().getExtras().getInt("id") ;
-        //String id = getIntent().getExtras().getString("id");
-        //String id = toString(getIntent().getExtras().getInt("id"));
-        //String id = getIntent().getExtras().getInt("id").toString();
-        //id = id.toString();
-        //String idString = id.toString();
 
         // ini views
-        //CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingtoolbar_id);
-        //collapsingToolbarLayout.setTitleEnabled(true);
-
-        //TextView tv_name = findViewById(R.id.aa_employee_name);
-        //TextView tv_studio = findViewById(R.id.aa_id);
         TextView tv_studio = findViewById(R.id.id);
-
-        // setting values to each view
-        //tv_name.setText(name);
         tv_studio.setText(id);
 
         //collapsingToolbarLayout.setTitle(name);
